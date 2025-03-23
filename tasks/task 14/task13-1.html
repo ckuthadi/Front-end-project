@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { display: flex; flex-direction: column; align-items: center; max-width: 400px; margin: auto; }
+        .input-group { display: flex; justify-content: space-between; width: 100%; margin-bottom: 10px; }
+        input { width: 48%; padding: 8px; }
+        .button-group { display: flex; justify-content: space-between; width: 100%; }
+        button { padding: 10px; width: 48%; border: none; cursor: pointer; }
+        .insert { background-color: lightgreen; }
+        .clear { background-color: lightcoral; }
+        .search-group { display: flex; justify-content: space-between; width: 100%; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Student Profile</h2>
+        <div class="input-group">
+            <input type="text" id="name" placeholder="Enter Name">
+            <input type="text" id="gender" placeholder="Enter Gender">
+        </div>
+        <div class="input-group">
+            <input type="number" id="year" placeholder="Enter Year of Birth">
+            <input type="text" id="color" placeholder="Enter Preferred Color">
+        </div>
+        <div class="button-group">
+            <button class="insert" onclick="saveStudentInfo()">Insert Info</button>
+            <button class="clear" onclick="clearInputs()">Clear Inputs</button>
+        </div>
+        <div class="button-group">
+            <button class="insert" onclick="displayStudentInfo()">Show Info</button>
+            <button class="clear" onclick="clearDisplay()">Clear Display</button>
+        </div>
+        <div class="search-group">
+            <input type="text" id="searchName" placeholder="Search by Name">
+        </div>
+        <div class="button-group">
+            <button class="insert" onclick="searchStudentInfo()">Search</button>
+        </div>
+        <h3>Stored Student Data:</h3>
+        <p id="studentOutput"></p>
+    </div>
+
+    <script>
+        let students = JSON.parse(localStorage.getItem("students")) || [];
+
+        function saveStudentInfo() {
+            const student = {
+                name: document.getElementById('name').value,
+                gender: document.getElementById('gender').value,
+                year: document.getElementById('year').value,
+                color: document.getElementById('color').value
+            };
+            students.push(student);
+            localStorage.setItem("students", JSON.stringify(students));
+            alert("Student information saved successfully!");
+        }
+
+        function displayStudentInfo() {
+            let output = students.map((student, index) =>
+                `Student ${index + 1}: Name: ${student.name}, Gender: ${student.gender}, Year of Birth: ${student.year}, Preferred Color: ${student.color}`).join('\n');
+            document.getElementById('studentOutput').innerText = output || "No student data found.";
+        }
+
+        function clearInputs() {
+            document.getElementById('name').value = "";
+            document.getElementById('gender').value = "";
+            document.getElementById('year').value = "";
+            document.getElementById('color').value = "";
+        }
+
+        function clearDisplay() {
+            document.getElementById('studentOutput').innerText = "";
+        }
+
+        function searchStudentInfo() {
+            const searchName = document.getElementById('searchName').value.toLowerCase();
+            const filteredStudents = students.filter(student =>
+                searchName ? student.name.toLowerCase().includes(searchName) : true
+            );
+
+            let output = filteredStudents.map((student, index) =>
+                `Student ${index + 1}: Name: ${student.name}, Gender: ${student.gender}, Year of Birth: ${student.year}, Preferred Color: ${student.color}`).join('\n');
+            document.getElementById('studentOutput').innerText = output || "No matching student data found.";
+        }
+    </script>
+</body>
+</html>
+
