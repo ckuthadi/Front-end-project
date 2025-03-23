@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+   
+<body>
+    <input id="input_a" placeholder="enter a" onkeyup="calculate();"/>
+    <input id="input_b" placeholder="enter b" onkeyup="calculate();"/>
+    <button onclick="calculate()">Calculate Sum</button>
+    <div id="demo_div"></div>
+
+    <script>
+        function calculate(){
+            let a=parseInt(document.getElementById("input_a").value);
+            let b=parseInt(document.getElementById("input_b").value);
+            let sum=0;
+
+            for(let i=a;i<=b;i++){
+                sum+=i;
+            }
+           // let i=a;
+            //while(i<=b){
+               // sum+=i;
+               // i++;
+           // }
+           // let sum=0;
+            //let
+
+            document.getElementById("demo_div").innerHTML = sum;
+        }
+    </script>
+</body>
+</html>
+    

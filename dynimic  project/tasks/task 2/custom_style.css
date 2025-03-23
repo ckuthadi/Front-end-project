@@ -1,0 +1,56 @@
+.head_div{
+    background-color: burlywood;
+    padding: 15px;
+    margin: 20px auto;
+    width: 70%;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    }
+    .content_div{
+    background-color: bisque;
+    padding: 15px;
+    margin: 20px auto;
+    width: 70%;
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    }
+    .button_div{
+    text-align: center;
+    }
+    .nav_btn{
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    text-align: center;
+    background-color: white;
+    }
+    body.dashboard_page{
+    background-color: blue;
+    color: white;
+    }
+    .dashhead_div {
+    background-color: brown;
+    color: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 60%;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 20px;
+    }
+    .empty {
+    background-color:yellow;
+    height: 200px;
+    padding: 20px;
+    width:60% ;
+    margin: 30px auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+        
